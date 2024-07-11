@@ -7,8 +7,10 @@ try:
     # Leer el archivo CSV
     data = pd.read_csv(archivo_csv)
     
-    # Ordenar los datos por nombre
-    data_ordenada = data.sort_values(by='Fecha de factura')
+    # Filtrar por las facturas que empiece con 'C'
+    data_filtrada = data[data['N° de factura'].str.startswith('C')]
+
+    data_ordenada = data_filtrada.sort_values(by='N° de factura')
     
     # Exportar a Excel
     archivo_excel = 'ventas_por_factura_2024.xlsx'
